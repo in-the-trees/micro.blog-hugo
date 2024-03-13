@@ -1,0 +1,70 @@
+{
+    "title": "[TITLE]",
+    "author":{
+        "name": "[FULL_NAME]",
+        "avatar": "https://micro.blog/[USERNAME]/avatar.jpg",
+        "username": "[USERNAME]",
+        "activitypub":{
+            "username":"[ACTIVITYPUB_USERNAME]",
+            "url":"[ACTIVITYPUB_ACTOR]"
+        }
+    },
+    "baseURL": "[SCHEME]://[HOSTNAME]/",
+    "mediaTypes":{
+        "application/json":{
+            "suffixes":[
+                "json"
+            ]
+        }
+    },
+    "outputFormats":{
+        "MicroblogJSON":{
+            "mediaType":"application/json",
+            "path":"microblog",
+            "baseName":"feed",
+            "isPlainText":true,
+            "notAlternative":true
+        },
+        "BlogJSON":{
+            "mediaType":"application/json",
+            "path":"blog",
+            "baseName":"feed",
+            "isPlainText":true,
+            "notAlternative":true
+        }
+    },
+    "outputs":{
+        "home":[
+            "HTML",
+            "MicroblogJSON",
+            "BlogJSON"
+        ],
+        "page":[
+            "HTML"
+        ]
+    },
+    "taxonomies":{
+        "category":"categories"
+    },
+    "rssLimit":9999999,
+    "uglyURLs":false,
+    "markup":{
+        "goldmark":{
+            "renderer":{
+                "unsafe":true
+            }
+        }
+    },
+    "enableRobotsTXT":true,
+    "languageCode":"en",
+    "paginate":25,
+    "params":{
+        "description":"Personal website of [FULL_NAME]. long story short, I'm a human and a netizen.",
+        "paginate_home":false,
+        "paginate_categories":false,
+        "paginate_replies":false,
+        "theme_seconds":"0",
+        "include_conversation":true,
+        "has_podcasts":false
+    }
+}

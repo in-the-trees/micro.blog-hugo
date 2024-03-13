@@ -1,0 +1,19 @@
+<li class="microblog-item">
+    <article tabindex="0" class="h-entry">
+        <header>
+            {{ $date := .Date.Format "January 2, 15:04" }}
+            {{ $lastmod := .Lastmod.Format "January 2, 15:04" }}
+            <div>
+                <a href="{{ .Permalink }}" class="u-url"><time pubdate itemprop="datePublished" datetime="{{- .Date.Format "2006-01-02 15:04:05 -0700" -}}">{{- $date -}}</time></a>
+                {{- if ne $lastmod $date -}}
+                    &nbsp;
+                    <span class="updated">(Updated: {{ $lastmod -}})</span>
+                {{- end -}}
+            </div>
+        </header>
+        <div class="e-content">
+            {{- .Content -}}
+        </div>
+    </article>
+    <hr>
+</li>

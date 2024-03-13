@@ -1,0 +1,7 @@
+<a href="{{ .Destination }}" title="Open image in new tab..." target="_blank" rel="noopener noreferrer">
+    {{ if strings.HasPrefix .Destination "https://jade.van-dorsten.net/uploads" }}
+        <img loading="lazy" src="{{ (print "https://micro.blog/photos/780x/" (.Destination | urlquery)) | safeURL }}" alt="{{ htmlUnescape .Text }}">
+    {{ else }}
+        <img loading="lazy" src="{{ .Destination | safeURL }}" alt="{{ htmlUnescape .Text }}">
+    {{ end }}
+</a>

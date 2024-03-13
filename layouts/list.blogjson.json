@@ -1,0 +1,46 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "van-dorsten.net/blog",
+  "icon": "{{ .Site.BaseURL }}/avatar.png",
+  "home_page_url": "{{ .Site.BaseURL }}/blog/",
+  "feed_url": "{{ .Site.BaseURL }}/blog/feed.json",
+  "authors" : [
+    {
+      "url" : "{{ .Site.BaseURL }}",
+      "name" : "Jade van Dorsten"
+    }
+  ],
+  "language": "en",
+  "items": [
+    {{- $list := where .Site.Pages.ByDate.Reverse "Type" "post" -}}
+    {{- $len := (len $list) -}}
+    {{- range $index, $value := $list -}}
+      {{- if .Title -}}
+        {
+          {{- if .Params.guid -}}
+          "id": "{{ .Params.guid }}",
+          {{- else -}}
+          "id": "{{ .Permalink }}",
+          {{- end -}}
+          "title": {{ .Title | jsonify }},
+          {{- $s := .Content | jsonify -}}
+          {{- $s := replace $s "\\u003c" "<" -}}
+          {{- $s := replace $s "\\u003e" ">" -}}
+          {{- $s := replace $s "\\u0026" "&" -}}
+          {{- $s := replace $s "https://micro.blog/photos/780x/" "" -}}
+          {{- $s := replace $s "%3A" ":" -}}
+          {{- $s := replace $s "%2F" "/" -}}
+          "content_html": {{ $s }},
+          {{- $date := .Date.Format "2006-01-02T15:04:05-07:00" -}}
+          {{- $lastmod := .Lastmod.Format "2006-01-02T15:04:05-07:00" -}}
+          "date_published": "{{ $date }}",
+          {{- if ne $lastmod $date -}}
+          "date_modified": "{{ $lastmod }}",
+          {{- end -}}
+          "url": "{{ .Permalink }}"
+        }
+        {{- if ne (add $index 1) $len -}},{{- end -}}
+      {{- end -}}
+    {{- end -}}
+  ]
+}

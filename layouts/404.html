@@ -1,0 +1,16 @@
+{{ define "main" }}
+<div id="dual-col">
+    <div id="col-1" role="complementary">
+        <div id="col-1-container">
+            <aside>{{ partial "i.html" . }}</aside>
+        </div>
+    </div>
+    <div id="col-2">
+        <div id="col-2-container">
+            <a class="backlink" href="/">{{- partial "backlink.html" . -}}</>
+            <h2 class="title">404</h2>
+            <p class="subtitle">Page not found.</p>
+        </div>
+    </div>
+</div>
+{{ end }}
