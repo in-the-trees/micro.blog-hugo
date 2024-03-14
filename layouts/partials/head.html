@@ -57,10 +57,6 @@
 <link rel="canonical" href="{{ .Permalink }}">
 <meta property="og:url" content="{{ .Permalink }}">
 
-
-<link rel="preconnect" href="https://van-dorsten.net/">
-
-
 {{ $ncss := resources.Get "css/normalise.css" | minify }}
 {{ $mcss := resources.Get "css/main.css" | minify }}
 {{ $secureNCSS := $ncss | resources.Fingerprint "sha512" }}
@@ -74,14 +70,10 @@
 <link rel="alternate" title="van-dorsten.net/blog" type="application/feed+json" href="https://van-dorsten.net/blog/feed.json">
 
 <meta http-equiv="Content-Security-Policy" content="
-    default-src 'none';
     connect-src 'self' https://micro.blog;
     img-src 'self' https://micro.blog;
     script-src 'self' https://static.cloudflareinsights.com;
     script-src-elem 'self' https://static.cloudflareinsights.com;
     style-src 'self';
     font-src 'self';
-    form-action 'none';
-    block-all-mixed-content;
-    base-uri 'none'
 ">
