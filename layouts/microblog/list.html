@@ -11,7 +11,7 @@
             <a class="backlink" href="/">{{- partial "backlink.html" . -}}</a>
 
             <h2 class="title">{{ .Title }}</h2>
-            <p class="subtitle">Welcome to my microblog where I post tweet-like content that I feel comfortable sharing publicly. My microblog is also accessible via a <a href="/microblog/feed.json">JSON feed</a> and through <a href="/activitypub/j">ActivityPub</a>.</p>
+            <p class="subtitle">Welcome to my microblog where I post tweet-like content that I feel comfortable sharing publicly. My microblog is also accessible via a <a href="/microblog/feed.json">JSON feed</a> and through <a href="https://micro.blog/typejade?remote_follow=1">ActivityPub</a>.</p>
             <ul id="post-list" class="h-feed">
                 {{ $list := where .Site.Pages.ByLastmod.Reverse "Type" "post" }}
                 {{ range $list }}
