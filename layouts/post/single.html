@@ -25,11 +25,9 @@
                         <a class="backlink" href="/microblog/">{{- partial "backlink.html" . -}}</a>
                         <h2 class="title">Microblog on 
                             <time pubdate itemprop="datePublished" datetime="{{- .Date.Format "2006-01-02 15:04:05 -0700" -}}">{{- $date -}}</time>
-                            {{- if ne $lastmod "March 13, 02:40" -}}
-                            {{- if ne $lastmod $date -}}
+                            {{- if in .Params.categories "show_updated" -}}
                             &nbsp;
                             <span class="updated">(Updated: <time pubdate itemprop="datePublished" datetime="{{- .Date.Format "2006-01-02 15:04:05 -0700" -}}">{{ $lastmod -}})</time></span>
-                            {{- end -}}
                             {{- end -}}
                         </h2>
                         <p>
