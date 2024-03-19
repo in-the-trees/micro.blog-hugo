@@ -46,7 +46,7 @@ const writeConversationToDOM = (conversation: Conversation): void => {
         const replyHTML: HTMLElement = document.createElement('div');
         replyHTML.classList.add('conversation-reply');
         
-        const myMBUsername: string = 'jadevandorsten';
+        const myMBUsername: string = 'typejade';
         if (reply.author._microblog.username === myMBUsername) {
             replyMetadata.innerHTML += `<span class="reply-author">Jade van Dorsten<span> (op)</span></span>`;
         } else {
@@ -93,10 +93,10 @@ const writeConversationToDOM = (conversation: Conversation): void => {
         conversationHTML.appendChild(replyHTML);
     });
 
-    const dom_main: HTMLElement = document.querySelector('main') as HTMLElement;
+    const coversationContainer: HTMLElement = document.getElementById('col-2-container') as HTMLElement;
 
     if (conversation.items.length > 0) {
-        dom_main.appendChild(conversationHTML);
+        coversationContainer.appendChild(conversationHTML);
     };
 };
 
