@@ -22,11 +22,11 @@
         <meta property="article:modified_time" {{ .Format $iso8601 | printf "content=%q" | safeHTMLAttr }}>
     {{ end }}
 {{ else if eq .Title "Microblog" }}
-    <title>My microblog</title>
-    <meta property="og:title" content="My microblog">
+    <title>Jade's microblog</title>
+    <meta property="og:title" content="Jade's microblog">
 {{ else if eq .Title "Blog" }}
-    <title>My blog</title>
-    <meta property="og:title" content="My blog">
+    <title>Jade's blog</title>
+    <meta property="og:title" content="Jade's blog">
 {{ else if .IsHome }}
     <title>Jade van Dorsten</title>
     <meta property="og:title" content="Jade van Dorsten">
@@ -66,8 +66,8 @@
 
 <link rel='icon' href='{{ "favicon.png" | relURL }}' type='image/png'>
 
-<link rel="alternate" title="van-dorsten.net/microblog" type="application/feed+json" href="https://van-dorsten.net/microblog/feed.json">
-<link rel="alternate" title="van-dorsten.net/blog" type="application/feed+json" href="https://van-dorsten.net/blog/feed.json">
+<link rel="alternate" title="Jade's microblog" type="application/feed+json" href="https://jade.van-dorsten.net/microblog/feed.json">
+<link rel="alternate" title="Jade's blog" type="application/feed+json" href="https://jade.van-dorsten.net/blog/feed.json">
 
 <meta http-equiv="Content-Security-Policy" content="
     connect-src 'self' https://micro.blog;

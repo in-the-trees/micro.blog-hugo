@@ -1,6 +1,6 @@
 {
   "version": "https://jsonfeed.org/version/1.1",
-  "title": "van-dorsten.net/blog",
+  "title": "Jade's blog",
   "icon": "{{ .Site.BaseURL }}/avatar.png",
   "home_page_url": "{{ .Site.BaseURL }}/blog/",
   "feed_url": "{{ .Site.BaseURL }}/blog/feed.json",

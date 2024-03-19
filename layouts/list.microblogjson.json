@@ -1,6 +1,6 @@
 {
   "version": "https://jsonfeed.org/version/1.1",
-  "title": "van-dorsten.net/microblog",
+  "title": "Jade's microblog",
   "icon": "{{ .Site.BaseURL }}/avatar.png",
   "home_page_url": "{{ .Site.BaseURL }}/microblog/",
   "feed_url": "{{ .Site.BaseURL }}/microblog/feed.json",
