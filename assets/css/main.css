@@ -1,9 +1,15 @@
 :root {
-    --font-size: 16px;
+    --font-size: 14px;
+    --sans-serif: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
     --line-height: 1.4;
 
-    --body-margin: 25px;
-    --body-padding: 25px;
+    --body-margin: 26px;
+    --body-padding: 26px;
+
+    --fg: rgba(0, 0, 0, 1.0);
+    --bg: rgba(255, 255, 255, 1.0);
+    --hr: rgba(0, 0, 0, 0.1);
 }
 
 html, body {
@@ -12,14 +18,21 @@ html, body {
 }
 
 body {
-    text-wrap: pretty;
-    line-height: var(--line-height);
+    color: var(--fg);
+    background-color: var(--bg);
+
     font-size: var(--font-size);
-    margin-block: var(--body-margin);
-    margin-inline: auto;
+    font-family: var(--sans-serif);
+    line-height: var(--line-height);
+
     max-width: 1050px;
-    padding-inline: var(--body-padding);
+    text-wrap: pretty;
+
+    margin-block-start: calc(var(--body-margin) / 2);
+    margin-block-end: var(--body-margin);
+    margin-inline: auto;
     padding-block-start: var(--body-padding);
+    padding-inline: var(--body-padding);
 }
 
 #single-col {
@@ -91,29 +104,36 @@ body {
 
 @media (max-width: 800px), (max-height: 800px) {
     body {
-        padding-block-start: 0;
+        padding-block-start: calc(var(--body-padding) / 2);
     }
+}
+
+.serif {
+    font-family: var(--serif);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--serif);
+    font-weight: 400;
 }
 
 h1 {
     font-size: 1.5em;
+    margin-block-start: 1.13em;
 }
 
 h2 {
     margin-block: .67em;
 }
 
-.backlink {
-    font-size: 0.75em;
-    text-decoration: none;
-}
-
-.backlink:hover {
-    text-decoration: underline;
+.backlink svg {
+    vertical-align: middle;
+    width: 16px;
+    height: 16px;
 }
 
 h2.title {
-    margin-block-start: -6px;
+    margin-block-start: 0.2em;
     margin-block-end: 0.5em;
 }
 p.subtitle {
@@ -122,9 +142,7 @@ p.subtitle {
 }
 
 hr {
-    border: none;
-    border: 0.5px solid black;
-    opacity: 0.25;
+    border: 0.5px solid var(--hr);
     margin-block: 20px;
 }
 
@@ -147,9 +165,10 @@ article header {
 }
 
 #microblog > header > h2 {
-    margin-block-start: 0em;
+    margin-block-start: 0.75em;
     margin-block-end: 0.25em;
     line-height: var(--line-height);
+    font-family: var(--sans-serif);
     font-size: 1em;
     font-weight: normal;
 }
@@ -158,13 +177,19 @@ article header {
     margin-block-start: 0.25em;
 }
 
+.updated {
+    opacity: .6;
+    font-weight: 300;
+    font-size: .92em;
+}
+
 img {
     width: 39vw;
     max-width: 390px;
 }
 
 a, a:visited {
-    color: darkgreen;
+    color: inherit;
 }
 
 .footnotes hr {
@@ -242,4 +267,12 @@ blockquote.quoteback {
 
 .reply-content > p:first-of-type {
     margin-block-start: 0.5em;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --fg: rgba(255, 255, 255, 1.0);
+        --bg: rgba(0, 0, 0, 1.0);
+        --hr: rgba(255, 255, 255, 0.1);
+    }
 }
