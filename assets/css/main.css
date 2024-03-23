@@ -7,9 +7,11 @@
     --body-margin: 26px;
     --body-padding: 26px;
 
-    --fg: rgba(0, 0, 0, 1.0);
-    --bg: rgba(255, 255, 255, 1.0);
-    --hr: rgba(0, 0, 0, 0.1);
+    --fg: #000;
+    --bg: #fff;
+    --hr: rgb(229, 231, 235);
+    --link-gray: #7e7e7e;
+    --link-color: rgb(59, 130, 246);
 }
 
 html, body {
@@ -126,10 +128,26 @@ h2 {
     margin-block: .67em;
 }
 
+.backlink, .backlink:visited,
+header a, header a:visited,
+.subtitle a, .subtitle a:visited
+{ color: var(--fg); }
+
 .backlink svg {
-    vertical-align: middle;
     width: 16px;
     height: 16px;
+    vertical-align: middle;
+}
+
+.enter {
+    padding: 0.25em 0.5em 0.25em 0;
+}
+
+.enter svg {
+    width: 14px;
+    height: 14px;
+    vertical-align: middle;
+    transform: translateY(-1px);
 }
 
 h2.title {
@@ -189,7 +207,14 @@ img {
 }
 
 a, a:visited {
-    color: inherit;
+    color: var(--link-gray);
+}
+
+#i a,
+#i a:visited,
+.link-color
+{
+    color: var(--link-color);
 }
 
 .footnotes hr {
