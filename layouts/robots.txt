@@ -1,8 +1,23 @@
 User-agent: *
-Sitemap: https://van-dorsten.net/sitemap.xml
-Disallow: /c/microblog
-Disallow: /c/blog
+Sitemap: https://jade.van-dorsten.net/sitemap.xml
 Disallow: /categories
+Disallow: /metadata
+
+User-agent: *
+Disallow: /2024/
+Disallow: /2025/
+Disallow: /2026/
+Disallow: /2027/
+Disallow: /2028/
+Disallow: /2029/
+Disallow: /2030/
+Allow: /2024/*/*
+Allow: /2025/*/*
+Allow: /2026/*/*
+Allow: /2027/*/*
+Allow: /2028/*/*
+Allow: /2029/*/*
+Allow: /2030/*/*
 
 User-agent: GPTBot
 Disallow: /
@@ -69,18 +84,3 @@ Disallow: /
 # --> fuck off.
 User-agent: BrandVerity/1.0
 Disallow: /
-
-# My content
-User-agent: *
-Disallow: /2024/
-Disallow: /2025/
-Disallow: /2026/
-Disallow: /2027/
-
-User-agent: *
-{{ $list := where .Site.Pages.ByLastmod.Reverse "Type" "post" }}
-{{- range $list -}}
-{{- if .Title -}}
-Allow: {{ .RelPermalink }}
-{{ end }}
-{{- end -}}
