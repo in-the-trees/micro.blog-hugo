@@ -14,25 +14,21 @@
             {{ end }}
                 <header>
                     {{ if .Title }}
-                        <a class="backlink" href="/blog/">{{- partial "backlink.html" . -}}</a>
+                        {{- partial "backlink.html" . -}}
 
                         <h2 class="title">{{ .Title }}</h2>
                         <p class="subtitle"><time pubdate itemprop="datePublished" datetime='{{ .Date.Format "2006-01-02" }}'>{{ .Date.Format (default "January 2, 2006" .Site.Params.dateFormat) }}</time></p>
                     {{ else }}
                         {{ $truncatedContent := .Content | plainify | truncate 48 }}
-                        {{ $date := .Date.Format "January 2, 15:04" }}
-                        {{ $lastmod := .Lastmod.Format "January 2, 15:04" }}
-                        <a class="backlink" href="/microblog/">{{- partial "backlink.html" . -}}</a>
-                        <h2 class="title">Microblog on 
+                        {{ $date := .Date.Format "Jan 2, 15:04" }}
+                        {{ $lastmod := .Lastmod.Format "Jan 2, 15:04" }}
+                        {{- partial "backlink.html" . -}}
+                        <h2 class="title timestamp">
                             <time pubdate itemprop="datePublished" datetime="{{- .Date.Format "2006-01-02 15:04:05 -0700" -}}">{{- $date -}}</time>
                             {{- if in .Params.categories "show_updated" -}}
-                            &nbsp;
                             <span class="updated">(Updated: <time pubdate itemprop="datePublished" datetime="{{- .Date.Format "2006-01-02 15:04:05 -0700" -}}">{{ $lastmod -}})</time></span>
                             {{- end -}}
                         </h2>
-                        <p>
-                            Reply via <a href="" id="reply-link-mb" class="u-url">Micro.blog</a> or by <a href="mailto:jade@van-dorsten.net?subject=Re: {{ htmlUnescape $truncatedContent }}" id="reply-link-email">email</a>.
-                        </p>
                     {{ end }}
                 </header>
                 <div tabindex="0">

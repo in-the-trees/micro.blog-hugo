@@ -16,7 +16,7 @@ const fetchConversationJSON = async (): Promise<Conversation | null> => {
 };
 
 const main = async () => {
-    const microblogReplyLink: HTMLAnchorElement = document.getElementById('reply-link-mb') as HTMLAnchorElement;
+    const microblogReplyLink: HTMLAnchorElement = document.getElementById('to-microblog') as HTMLAnchorElement;
     const conversationJSON: Conversation | null = await fetchConversationJSON();
 
     if (conversationJSON) {
