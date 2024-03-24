@@ -240,9 +240,14 @@ header a, header a:visited,
     transition-duration: .3s;
 }
 
-.enter:active, .enter:hover {
+.enter:active, .enter:focus {
+    transition-delay: 0s, 0s;
+}
+
+.enter:active, .enter:hover, .enter:focus {
     background-color: var(--highlight);
     color: var(--link-color);
+    -webkit-tap-highlight-color: transparent;
 }
 
 .enter svg {
