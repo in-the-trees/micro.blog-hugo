@@ -270,6 +270,10 @@ header a, header a:visited,
     gap: .5rem;
 }
 
+.timestamp a, .timestamp a:visited {
+    color: var(--text-alt);
+}
+
 h2.title {
     margin-block-start: .67em;
     margin-block-end: 0.335em;
