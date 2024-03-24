@@ -1,3 +1,8 @@
+/*
+    yes these styles are a mess.
+    i wish tailwind was easily usable with hugo.
+*/
+
 :root {
     --font-size: 14px;
     --sans-serif: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -372,6 +377,11 @@ blockquote.quoteback {
     display: inline-block;
 }
 
+
+.microblog-conversation {
+    padding-block-end: 3em;
+}
+
 .microblog-conversation > hr {
     margin-block-start: 40px;
 }
@@ -388,17 +398,44 @@ blockquote.quoteback {
     margin-block-end: 2em;
 }
 
+.reply-metadata .timestamp {
+    gap: .25rem;
+    font-size: 10px;
+}
+
+.reply-metadata .enter svg {
+    width: 12px;
+    height: 12px;
+}
+
+.reply-author {
+    font-family: var(--serif);
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+}
 
 .reply-author > span {
     font-style: italic;
 }
 
+.reply-author svg {
+    width: 14px;
+    height: 14px;
+    vertical-align: middle;
+    transform: translateY(-1px);
+    color: var(--link-color);
+}
+
 .reply-content {
     margin-block-start: 0.5em;
     margin-block-end: 1em;
-    margin-inline-start: 40px;
 }
 
 .reply-content > p:first-of-type {
     margin-block-start: 0.5em;
+}
+
+.reply-content > p:first-of-type > a:first-of-type {
+    color: var(--link-color);
 }
