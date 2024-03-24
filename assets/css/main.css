@@ -15,6 +15,7 @@
     --bg: #fff;
     --hr: rgb(229, 231, 235);
     --link-gray: #7e7e7e;
+    --svg-light-gray: rgb(156 163 175);
     --link-color: rgb(59, 130, 246);
     --highlight: rgb(239, 246, 255);
     --text-alt: rgb(107 114 128);
@@ -174,7 +175,7 @@ h2 {
 }
 
 .backlink-seperator {
-    color: rgb(156 163 175);
+    color: var(--svg-light-gray);
     width: 12px;
     height: 12px;
     display: block;
@@ -310,8 +311,10 @@ article header {
     margin-block-start: 0.25em;
 }
 
-.updated {
-    font-weight: 300;
+.updated-icon {
+    width: 12px;
+    height: 12px;
+    color: var(--svg-light-gray);
 }
 
 img {
