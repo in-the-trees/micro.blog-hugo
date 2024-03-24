@@ -415,7 +415,20 @@ a, a:visited {
     margin-block-end: 0.25rem;
 }
 
-.og svg {
+.og-url-container {
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+}
+
+.og-url-container .og-url-icon {
+    width: 14px;
+    height: 14px;
+    vertical-align: middle;
+    flex-shrink: 0;
+}
+
+.og-metadata > svg {
     margin-inline-start: auto;
     margin-inline-end: 0.5rem;
     width: 20px;
@@ -430,16 +443,16 @@ a, a:visited {
 }
 
 @media (max-width: 320px) {
-    .og svg {
+    .og-metadata > svg {
         display: none;
     }
 }
 
-.og:active svg, .og:focus svg {
+.og:active .og-metadata > svg, .og:focus .og-metadata > svg {
     transition-delay: 0s;
 }
 
-.og:active svg, .og:hover svg {
+.og:active .og-metadata > svg, .og:hover .og-metadata > svg {
     color: var(--link-color);
 }
 
