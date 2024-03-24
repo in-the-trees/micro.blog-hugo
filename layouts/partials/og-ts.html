@@ -1,13 +1,13 @@
 {{ if eq .Type "post" }}
-    {{ $opts := dict "targetPath" "js/quoteback.js" }}
+    {{ $opts := dict "targetPath" "js/og.js" }}
     {{ $opts = merge $opts (dict "minify" "true") }}
-    {{ with resources.Get "ts/quoteback/quoteback.ts" | js.Build $opts | fingerprint }}
+    {{ with resources.Get "ts/og.ts" | js.Build $opts | fingerprint }}
         <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>
     {{ end }}
 {{ else if eq .Title "Microblog" }}
-    {{ $opts := dict "targetPath" "js/quoteback.js" }}
+    {{ $opts := dict "targetPath" "js/og.js" }}
     {{ $opts = merge $opts (dict "minify" "true") }}
-    {{ with resources.Get "ts/quoteback/quoteback.ts" | js.Build $opts | fingerprint }}
+    {{ with resources.Get "ts/og.ts" | js.Build $opts | fingerprint }}
         <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>
     {{ end }}
 {{ end }}
