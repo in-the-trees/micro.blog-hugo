@@ -115,6 +115,8 @@ body {
         grid-column: 1;
         overflow-y: visible;
         height: auto;
+
+        padding-inline-start: 0;
     }
     #col-1-container, #col-2-container {
         margin-block-end: 0;
