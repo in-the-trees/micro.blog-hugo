@@ -314,7 +314,7 @@ hr {
     margin-block-start: 0.5em;
 }
 
-#post-list {
+.post-list {
     list-style: none;
     padding: 0;
 }
@@ -360,15 +360,28 @@ article header {
     gap: .25rem;
 }
 
+.blog-post-list {
+    padding-block-start: 6px;
+}
+
+.blog-item .timestamp,
+.blog-item svg,
+.blog-item a {
+    display: block;
+    line-height: 1;
+    align-self: flex-start;
+}
+
 .blog-item .timestamp {
     font-size: 13px;
+    text-wrap: nowrap;
 }
 
 .blog-item svg {
     color: var(--svg-light-gray);
     width: 12px;
     height: 12px;
-    display: block;
+    transform: translateY(.5px);
 }
 
 .blog-item a, .blog-item a:visited {
