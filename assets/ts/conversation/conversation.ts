@@ -40,17 +40,27 @@ const writeConversationToDOM = (conversation: Conversation): void => {
     conversationHTML.classList.add('microblog-conversation');
     conversationHTML.innerHTML += `<hr>`;
 
+    let previousReplyAuthor: string;
     conversation.items.forEach((reply) => {
+        const currentReplyAuthor: string = reply.author._microblog.username ? reply.author._microblog.username : '';
+
+        const replyingToMatch = reply.content_html.match(/@(\w+)</);
+        const replyingTo: string = replyingToMatch ? replyingToMatch[1] : '';
+
         const replyMetadata: HTMLElement = document.createElement('div');
         replyMetadata.classList.add('reply-metadata');
         const replyHTML: HTMLElement = document.createElement('div');
         replyHTML.classList.add('conversation-reply');
+        if (replyingTo === previousReplyAuthor) {
+            replyHTML.classList.add('nested-reply');
+        }
         
         const myMBUsername: string = 'typejade';
         if (reply.author._microblog.username === myMBUsername) {
-            replyMetadata.innerHTML += `<span class="reply-author"><span class="author-name">Jade van Dorsten</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
-          </svg></span>`;
+            replyMetadata.innerHTML += `<span class="reply-author"><span class="author-name">Jade van Dorsten</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M16.403 12.652a3 3 0 0 0 0-5.304 3 3 0 0 0-3.75-3.751 3 3 0 0 0-5.305 0 3 3 0 0 0-3.751 3.75 3 3 0 0 0 0 5.305 3 3 0 0 0 3.75 3.751 3 3 0 0 0 5.305 0 3 3 0 0 0 3.751-3.75Zm-2.546-4.46a.75.75 0 0 0-1.214-.883l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clip-rule="evenodd" /></svg>
+                    </span>
+            `;
         } else {
             replyMetadata.innerHTML += `<span class="reply-author"><span class="author-name">${ reply.author.name }</span></span>`;
         };
@@ -100,6 +110,8 @@ const writeConversationToDOM = (conversation: Conversation): void => {
         replyHTML.innerHTML += `<div class="reply-content">${ parsedReplyContent.body.innerHTML }</div>`;
 
         conversationHTML.appendChild(replyHTML);
+
+        previousReplyAuthor = currentReplyAuthor;
     });
 
     const coversationContainer: HTMLElement = document.getElementById('col-2-container') as HTMLElement;

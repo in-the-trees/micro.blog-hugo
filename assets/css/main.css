@@ -588,32 +588,41 @@ a, a:visited {
     margin-block-end: 2em;
 }
 
+.conversation-reply.nested-reply {
+    margin-block-start: -1em;
+
+    margin-inline-start: 20px;
+    padding-inline-start: 20px;
+    border-left: 1px solid var(--hr);
+}
+
 .reply-metadata .timestamp {
-    gap: .25rem;
-    font-size: 10px;
+    gap: .16rem;
+    font-size: 11px;
+}
+
+.reply-metadata .enter {
+    padding: 2px 3.5px;
 }
 
 .reply-metadata .enter svg {
     width: 12px;
     height: 12px;
+    transform: translateY(-1.25px);
 }
 
 .reply-author {
-    font-family: var(--serif);
+    font-weight: 425;
     display: flex;
     align-items: center;
     gap: .25rem;
-}
-
-.reply-author > span {
-    font-style: italic;
 }
 
 .reply-author svg {
     width: 14px;
     height: 14px;
     vertical-align: middle;
-    transform: translateY(-1px);
+    transform: translateY(0.5px);
     color: var(--link-color);
 }
 
