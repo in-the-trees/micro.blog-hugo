@@ -20,22 +20,22 @@
                 {{ $list := slice }}
 
                 {{ range $sortedPosts }}
-                {{ $lastMod := .Lastmod.Unix }}
-                {{ $date := .Date.Unix }}
-                {{ $showUpdate := in .Params.categories "show_updated" }}
+                {{ if not .Title }}
+                    {{ $lastMod := .Lastmod.Unix }}
+                    {{ $date := .Date.Unix }}
+                    {{ $showUpdate := in .Params.categories "show_updated" }}
 
-                {{ if and $showUpdate (gt $lastMod $date) }}
-                    {{ $list = $list | append (dict "post" . "date" $lastMod) }}
-                {{ else }}
-                    {{ $list = $list | append (dict "post" . "date" $date) }}
+                    {{ if and $showUpdate (gt $lastMod $date) }}
+                        {{ $list = $list | append (dict "post" . "date" $lastMod) }}
+                    {{ else }}
+                        {{ $list = $list | append (dict "post" . "date" $date) }}
+                    {{ end }}
                 {{ end }}
                 {{ end }}
 
                 {{ $list = sort $list "date" "desc" }}
                 {{ range $list }}
-                    {{ if not .Title }}
-                        {{ partial "microblog-item.html" . }}
-                    {{ end }}
+                    {{ partial "microblog-item.html" . }}
                 {{ end }}
             </ul>
         </div>
