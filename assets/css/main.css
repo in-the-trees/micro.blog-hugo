@@ -105,7 +105,7 @@ body {
         padding-block-start: var(--body-padding);
         padding-inline: calc(var(--body-padding) - 1em);;
     }
-    #col {
+    #single-col {
         padding-inline: 1em;
         padding-block-start: 1.5em;
     }
