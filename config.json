@@ -9,7 +9,6 @@
             "url":"[ACTIVITYPUB_ACTOR]"
         }
     },
-    "baseURL": "[SCHEME]://[HOSTNAME]/",
     "mediaTypes":{
         "application/json":{
             "suffixes":[

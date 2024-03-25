@@ -33,6 +33,8 @@
     <title>Jade van Dorsten</title>
     <meta property="og:title" content="Jade van Dorsten">
     <meta property="og:type" content="profile">
+{{ else if or (strings.HasSuffix .Permalink "/404.html") (strings.HasSuffix .Permalink "/404") (strings.HasSuffix .Permalink "/404/") }}
+    <title>404</title>
 {{ else }}
     <title>{{ .Title }}</title>
     <meta property="og:title" content="{{ .Title }}">

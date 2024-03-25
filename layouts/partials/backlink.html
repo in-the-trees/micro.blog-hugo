@@ -45,8 +45,10 @@
         <span class="backlink-current">Microblog</span>
         {{- else if eq .Title "Blog" -}}
         <span class="backlink-current">Blog</span>
+        {{ else if or (strings.HasSuffix .Permalink "/404.html") (strings.HasSuffix .Permalink "/404") (strings.HasSuffix .Permalink "/404/") }}
+        <span class="backlink-current">404</span>
         {{- else -}}
-        <span class="backlink-current">{{ .Title }}</span>
+        <span class="backlink-current">This page</span>
         {{- end -}}
     </div>
 {{- end -}}
