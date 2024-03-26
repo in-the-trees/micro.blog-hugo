@@ -10,8 +10,8 @@
         <title>{{ .Title }}</title>
         <meta property="og:title" content="{{ .Title }}">
     {{ else }}
-        <title>Microblog on {{ .Date.Format "January 2, 2006 at 15:04" }}</title>
-        <meta property="og:title" content="Microblog on {{ .Date.Format "January 2, 2006 at 15:04" }}">
+        <title>Jade's microblog ~ {{ .Date.Format "January 2, 2006 at 15:04" }}</title>
+        <meta property="og:title" content="Jade's microblog ~ {{ .Date.Format "January 2, 2006 at 15:04" }}">
     {{ end }}
 
     <meta property="og:type" content="article">
