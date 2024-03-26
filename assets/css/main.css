@@ -171,10 +171,10 @@ strong, b {
 #col-2-container > article {
     flex: 1;
     overflow: auto;
-    margin-block-start: calc(28px + 2rem);
     z-index: 0;
 
     padding-inline: 1em;
+    margin-inline: -1em;
 }
 
 .backlink {
@@ -386,6 +386,10 @@ article header {
 
 .blog-post-list {
     padding-block-start: 6px;
+}
+
+.blog-post-list li:not(:last-of-type) {
+    margin-block-end: 1em;
 }
 
 .blog-item .timestamp,
