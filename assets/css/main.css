@@ -113,7 +113,10 @@ body {
     }
     #single-col {
         padding-inline: 0 1em;
-        padding-block-start: 1.5em;
+        padding-block-start: 1.25em;
+    }
+    #col {
+        padding-inline-end: 0;
     }
 
     #dual-col {
@@ -163,12 +166,27 @@ strong, b {
     font-weight: 500;
 }
 
+
+#col-2-container > div:not(:first-of-type),
+#col-2-container > article {
+    flex: 1;
+    overflow: auto;
+    margin-block-start: calc(28px + 2rem);
+    z-index: 0;
+
+    padding-inline: 1em;
+}
+
 .backlink {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: .5rem;
     margin-block-start: .67em;
+
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 .backlink-button {
