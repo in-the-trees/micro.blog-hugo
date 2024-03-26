@@ -10,19 +10,21 @@
         <div id="col-2-container">
             {{- partial "backlink.html" . -}}
 
-            <h2 class="title">{{ .Title }}</h2>
-            <p class="subtitle">Welcome to my blog where I post extended or more evergreen content in contrast to my microblog. My blog is also accessible via a <a href="/blog/feed.json">JSON feed</a>.</p> 
-            {{ $posts := where .Site.Pages.ByDate.Reverse "Type" "post" }}
-            {{ $blogPosts := where $posts "Title" "!=" "" }}
-            {{ if $blogPosts }}
-                <ul id="post-list" class="post-list blog-post-list">
-                    {{ range $blogPosts }}
-                        {{ partial "blog-item.html" . }}
-                    {{ end }}
-                </ul>
-            {{ else }}
-                <p>No posts yet.</p>
-            {{ end }}
+            <div>
+                <h2 class="title">{{ .Title }}</h2>
+                <p class="subtitle">Welcome to my blog where I post extended or more evergreen content in contrast to my microblog. My blog is also accessible via a <a href="/blog/feed.json">JSON feed</a>.</p> 
+                {{ $posts := where .Site.Pages.ByDate.Reverse "Type" "post" }}
+                {{ $blogPosts := where $posts "Title" "!=" "" }}
+                {{ if $blogPosts }}
+                    <ul id="post-list" class="post-list blog-post-list">
+                        {{ range $blogPosts }}
+                            {{ partial "blog-item.html" . }}
+                        {{ end }}
+                    </ul>
+                {{ else }}
+                    <p>No posts yet.</p>
+                {{ end }}
+            </div>
         </div>
     </div>
 </div>

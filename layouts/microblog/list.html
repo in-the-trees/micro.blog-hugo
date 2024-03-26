@@ -10,34 +10,36 @@
         <div id="col-2-container">
             {{- partial "backlink.html" . -}}
 
-            <h2 class="title">{{ .Title }}</h2>
-            <p class="subtitle">Welcome to my microblog where I post tweet-like content that I feel comfortable sharing publicly. My microblog is also accessible via a <a href="/microblog/feed.json">JSON feed</a> and through <a href="https://micro.blog/typejade?remote_follow=1">ActivityPub</a>.</p>
-            <ul id="post-list" class="post-list microblog-post-list h-feed">
-                {{ $allPosts := where .Site.Pages "Type" "post" }}
+            <div>
+                <h2 class="title">{{ .Title }}</h2>
+                <p class="subtitle">Welcome to my microblog where I post tweet-like content that I feel comfortable sharing publicly. My microblog is also accessible via a <a href="/microblog/feed.json">JSON feed</a> and through <a href="https://micro.blog/typejade?remote_follow=1">ActivityPub</a>.</p>
+                <ul id="post-list" class="post-list microblog-post-list h-feed">
+                    {{ $allPosts := where .Site.Pages "Type" "post" }}
 
-                {{ $sortedPosts := sort $allPosts ".Params.date" "desc" }}
+                    {{ $sortedPosts := sort $allPosts ".Params.date" "desc" }}
 
-                {{ $list := slice }}
+                    {{ $list := slice }}
 
-                {{ range $sortedPosts }}
-                {{ if not .Title }}
-                    {{ $lastMod := .Lastmod.Unix }}
-                    {{ $date := .Date.Unix }}
-                    {{ $showUpdate := in .Params.categories "show_updated" }}
+                    {{ range $sortedPosts }}
+                    {{ if not .Title }}
+                        {{ $lastMod := .Lastmod.Unix }}
+                        {{ $date := .Date.Unix }}
+                        {{ $showUpdate := in .Params.categories "show_updated" }}
 
-                    {{ if and $showUpdate (gt $lastMod $date) }}
-                        {{ $list = $list | append (dict "post" . "date" $lastMod) }}
-                    {{ else }}
-                        {{ $list = $list | append (dict "post" . "date" $date) }}
+                        {{ if and $showUpdate (gt $lastMod $date) }}
+                            {{ $list = $list | append (dict "post" . "date" $lastMod) }}
+                        {{ else }}
+                            {{ $list = $list | append (dict "post" . "date" $date) }}
+                        {{ end }}
                     {{ end }}
-                {{ end }}
-                {{ end }}
+                    {{ end }}
 
-                {{ $list = sort $list "date" "desc" }}
-                {{ range $list }}
-                    {{ partial "microblog-item.html" . }}
-                {{ end }}
-            </ul>
+                    {{ $list = sort $list "date" "desc" }}
+                    {{ range $list }}
+                        {{ partial "microblog-item.html" . }}
+                    {{ end }}
+                </ul>
+            </div>
         </div>
     </div>
 </div>
