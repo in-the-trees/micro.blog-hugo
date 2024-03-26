@@ -43,7 +43,7 @@
                 {{- $s := replace $s "\\u003c" "<" -}}
                 {{- $s := replace $s "\\u003e" ">" -}}
                 {{- $s := replace $s "\\u0026" "&" -}}
-                {{- $s := replace $s "https://micro.blog/photos/780x/" "" -}}
+                {{- $s := replace $s "https://micro.blog/photos/800x/" "" -}}
                 {{- $s := replace $s "%3A" ":" -}}
                 {{- $s := replace $s "%2F" "/" -}}
                 "content_html": {{ $s }},
