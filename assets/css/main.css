@@ -10,6 +10,7 @@
     --line-height: 1.4;
 
     --body-padding: 26px;
+    --body-padding-negative: -26px;
 
     --fg: #000;
     --fg-lighter: rgb(17, 24, 39);
@@ -55,12 +56,14 @@ body {
     max-width: 42em;
     margin: auto;
     overflow-x: hidden;
+
+    padding-inline: 1em;
 }
 
 #dual-col {
     display: grid; 
     grid-template-columns: 1fr 2fr;
-    gap: 2em;
+    gap: 3em;
 }
 
 #col-1 {
@@ -71,6 +74,8 @@ body {
 
     -ms-overflow-style: none;
     scrollbar-width: none;
+
+    padding-inline: 1em;
 }
 
 #col-2 {
@@ -107,7 +112,7 @@ body {
         padding-inline: calc(var(--body-padding) - 1em);;
     }
     #single-col {
-        padding-inline: 1em;
+        padding-inline: 0 1em;
         padding-block-start: 1.5em;
     }
 
@@ -444,13 +449,64 @@ a, a:visited {
     color: var(--link-gray);
 }
 
-#i ul li,
-#i a, #i a:visited {
+#i ul li {
     color: var(--fg-lighter);
 }
 
-#i #publish-list a, #i #publish-list a:visited {
+#i a, #i a:visited {
     color: var(--link-color);
+}
+
+#publish-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .5rem;
+    margin-block-end: 1.5em;
+}
+
+#publish-list a, #publish-list a:visited {
+    color: var(--fg);
+}
+
+.ibutton {
+    text-wrap: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem;
+    border-radius: .5rem;
+    padding: .25rem .5rem;
+    width: max-content;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+    border: 1px solid #e5e7eb;
+
+    transition-property: transform, background-color, border-color;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+    transition-duration: .15s;
+}
+
+.ibutton:active, .ibutton:focus {
+    transition-delay: 0s;
+}
+
+.ibutton:active, .ibutton:hover {
+    opacity: 0.9;
+    transform: scale(103%);
+    background-color: rgb(249 250 251/1);
+    border-color: rgb(209 213 219/1);
+}
+
+.ibutton, .ibutton:visited {
+    color: var(--fg);
+    text-decoration: none;
+}
+
+.ibutton svg {
+    width: 1rem;
+    height: 1rem;
 }
 
 ::selection {
