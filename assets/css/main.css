@@ -12,6 +12,7 @@
     --body-padding: 26px;
 
     --fg: #000;
+    --fg-lighter: rgb(17, 24, 39);
     --bg: #fff;
     --hr: rgb(229, 231, 235);
     --link-gray: #7e7e7e;
@@ -443,10 +444,12 @@ a, a:visited {
     color: var(--link-gray);
 }
 
-#i a,
-#i a:visited,
-.link-color
-{
+#i ul li,
+#i a, #i a:visited {
+    color: var(--fg-lighter);
+}
+
+#i #publish-list a, #i #publish-list a:visited {
     color: var(--link-color);
 }
 
@@ -567,6 +570,7 @@ a, a:visited {
 
 
 .microblog-conversation {
+    color: var(--fg-lighter);
     padding-block-end: 3em;
 }
 
