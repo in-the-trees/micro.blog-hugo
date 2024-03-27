@@ -494,15 +494,18 @@ a, a:visited {
 }
 
 #publish-list {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: .5rem;
     margin-block-end: 1.5em;
 }
 
 #publish-list a, #publish-list a:visited {
     color: var(--fg);
+}
+
+.ibutton-group {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .ibutton {
@@ -548,14 +551,6 @@ a, a:visited {
 
 .ibutton:active, .ibutton:hover svg {
     transform: translateY(0.0rem);
-}
-
-.ibutton + .ibutton {
-    margin-inline-start: 0.5rem;
-}
-
-#publish-list > .ibutton + .ibutton {
-    margin-inline-start: 0;
 }
 
 a[class="ibutton download-ibutton"] {
