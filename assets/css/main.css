@@ -477,6 +477,8 @@ img:active, img:hover {
     max-height: 320px;
     height: auto;
     object-fit: contain;
+
+    margin-block: .5rem;
 }
 
 a, a:visited {
