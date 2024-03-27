@@ -46,6 +46,7 @@
                 {{- $s := replace $s "https://micro.blog/photos/800x/" "" -}}
                 {{- $s := replace $s "%3A" ":" -}}
                 {{- $s := replace $s "%2F" "/" -}}
+                {{- $s := replaceRE "<svg.*?</svg>" "" $s -}}
                 "content_html": {{ $s }},
                 {{- $date := $post.Date.Format "2006-01-02T15:04:05-07:00" -}}
                 {{- $lastmod := $post.Lastmod.Format "2006-01-02T15:04:05-07:00" -}}
