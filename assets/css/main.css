@@ -612,6 +612,25 @@ a[class="ibutton download-ibutton"] {
     font-size: 0.5em;
 }
 
+code {
+    text-wrap: nowrap;
+    color: #6b7280;
+    background-color: #f9fafb;
+    font-size: 12px;
+    padding: 0.125em 0.25em;
+    border-radius: 0.5rem;
+}
+
+pre > code {
+    display: block;
+    overflow-x: scroll;
+    font-family: var(--mono);
+
+    padding: 1rem;
+    border: 1px solid #f3f4f6;
+    border-radius: .75rem;
+}
+
 
 .og-hide {
     display: none;
