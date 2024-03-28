@@ -617,6 +617,7 @@ a[class="ibutton download-ibutton"] {
     border-radius: .75rem;
     padding: 1rem;
     margin-block: 1em;
+    margin-inline: 0;
 
     transition-property: transform;
     transition-timing-function: cubic-bezier(.4,0,.2,1);
@@ -643,13 +644,14 @@ a[class="ibutton download-ibutton"] {
     gap: .5rem;
 }
 
-.og-metadata > div {
+.og-metadata > footer {
     display: block;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .og-title, .og-url {
+    font-style: normal;
     display: block;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -657,8 +659,15 @@ a[class="ibutton download-ibutton"] {
 }
 
 .og-title {
+    text-wrap: wrap;
     font-weight: 500;
     margin-block-end: 0.25rem;
+}
+
+@supports (text-wrap: pretty) {
+    .og-title {
+        text-wrap: pretty;
+    }
 }
 
 .og-url-container {
