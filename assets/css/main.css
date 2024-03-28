@@ -631,6 +631,10 @@ pre > code {
     border-radius: .75rem;
 }
 
+.gist {
+    margin-block: 1em;
+}
+
 
 .og-hide {
     display: none;
