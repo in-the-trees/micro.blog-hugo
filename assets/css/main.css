@@ -99,7 +99,7 @@ body {
     margin-block-end: calc(var(--body-padding) * 5);
 }
 
-@media (max-width: 800px) {
+@media (max-width: 768px) {
     :root {
         --body-padding: 16px;
     }
@@ -133,6 +133,17 @@ body {
     }
     #col-1-container, #col-2-container {
         margin-block-end: 0;
+    }
+}
+
+@media (max-height: 875px) {
+    body{ 
+        padding-block-start: var(--body-padding);
+    }
+}
+@media (max-width: 875px) {
+    body {
+        padding-inline: calc(var(--body-padding) / 2);
     }
 }
 
