@@ -245,7 +245,6 @@ strong, b {
     width: 12px;
     height: 12px;
     display: block;
-    transform: translateY(-0.25px);
     transition-property: none;
 }
 
@@ -298,12 +297,12 @@ header a, header a:visited,
 { color: var(--fg); }
 
 .enter {
-    margin-inline-start: -0.3em;
-    padding: 2px 3px 2px 3px;
+    display: block;
+    margin-block-start: 0;
     color: var(--text-alt);
 
     border-radius: 50%;
-    transition-property: background, color;
+    transition-property: color;
     transition-timing-function: cubic-bezier(.4,0,.2,1);
     transition-duration: .3s;
 }
@@ -312,8 +311,15 @@ header a, header a:visited,
     transition-delay: 0s, 0s;
 }
 
-.enter:active, .enter:hover, .enter:focus,
-.enter:visited:active, .enter:visited:hover, .enter:visited:focus {
+.enter svg {
+    border-radius: 50%;
+    transition-property: background-color;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+    transition-duration: .3s;
+    padding: 2px;
+}
+
+.enter:hover svg, .enter:visited:hover svg {
     background-color: var(--highlight);
     color: var(--link-color);
     -webkit-tap-highlight-color: transparent;
@@ -323,7 +329,6 @@ header a, header a:visited,
     width: 14px;
     height: 14px;
     vertical-align: middle;
-    transform: translateY(-1px);
 }
 
 .timestamp {
@@ -341,18 +346,22 @@ header a, header a:visited,
     color: var(--text-alt);
 }
 
+.timestamp.microblog-item-timestamp {
+    margin-inline-start: -2px;
+}
+
 h2.title {
     margin-block-start: .67em;
     margin-block-end: 0.335em;
 }
 p.subtitle {
     margin-block-start: 0.5em;
-    margin-block-end: 1.75em;
+    margin-block-end: 2.25em;
 }
 
 hr {
     border: 0.5px solid var(--hr);
-    margin-block: 20px;
+    margin-block: 1.5em;
 }
 
 .list-title {
@@ -796,7 +805,7 @@ pre > code {
 }
 
 .microblog-conversation > hr {
-    margin-block-start: 40px;
+    margin-block: 2em;
 }
 
 .conversation-reply {
@@ -825,13 +834,21 @@ pre > code {
 }
 
 .reply-metadata .enter {
-    padding: 2px 3.5px;
+    margin-block-start: -0.13em;
+    margin-inline-end: 0.25em;
+    transition: none;   
 }
 
 .reply-metadata .enter svg {
+    border-radius: 0;
+    padding: 0;
     width: 12px;
     height: 12px;
-    transform: translateY(-0.5px);
+    transition: none;
+}
+
+.reply-metadata .enter:hover svg, .reply-metadata .enter:visited:hover svg {
+    background: none;
 }
 
 .reply-author {
@@ -846,7 +863,6 @@ pre > code {
     width: 13px;
     height: 13px;
     vertical-align: middle;
-    transform: translateY(0.5px);
     color: var(--link-color);
 }
 
