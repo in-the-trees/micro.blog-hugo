@@ -1,0 +1,45 @@
+/*
+  Inter
+  (sans-serif)
+*/
+
+@font-face {
+  font-family: InterVariable;
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/type/inter/InterVariable.woff2") format("woff2");
+}
+@font-face {
+  font-family: InterVariable;
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/type/inter/InterVariable-Italic.woff2") format("woff2");
+}
+
+/*
+  Playfair
+  (serif)
+*/
+
+@font-face {
+  font-family: 'PlayfairRoman';
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url("/type/playfair/PlayfairVariable.woff2") format('woff2');
+}
+
+/*
+  Commit Mono
+  (monospace)
+*/
+
+@font-face {
+  font-family: "CommitMonoV143";
+  font-style: normal;
+  font-weight: 200 700;
+  font-display: swap;
+  src: url("/type/commit-mono/CommitMonoVariable.woff2") format("woff2");
+}

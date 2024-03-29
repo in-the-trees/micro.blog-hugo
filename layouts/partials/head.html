@@ -61,12 +61,15 @@
 <link rel="canonical" href="{{ .Permalink }}">
 <meta property="og:url" content="{{ .Permalink }}">
 
-{{ $ncss := resources.Get "css/normalise.css" | minify }}
-{{ $mcss := resources.Get "css/main.css" | minify }}
-{{ $secureNCSS := $ncss | resources.Fingerprint "sha512" }}
-{{ $secureMCSS := $mcss | resources.Fingerprint "sha512" }}
-<link rel="stylesheet" href="{{ $secureNCSS.Permalink }}" integrity="{{ $secureNCSS.Data.Integrity }}">
-<link rel="stylesheet" href="{{ $secureMCSS.Permalink }}" integrity="{{ $secureMCSS.Data.Integrity }}">
+{{ with resources.Get "css/normalise.css" | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">
+{{ end }}
+{{ with resources.Get "css/type.css" | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">
+{{ end }}
+{{ with resources.Get "css/main.css" | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">
+{{ end }}
 
 <link rel='icon' href='{{ "favicon.png" | relURL }}' type='image/png'>
 

@@ -5,9 +5,13 @@
 
 :root {
     --font-size: 14px;
-    --sans-serif: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "San Francisco", "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --serif: ui-serif, "New York", Georgia, Cambria, "Times New Roman", Times, serif;
-    --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --sans-serif: "InterVariable", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "San Francisco", "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --serif: "PlayfairRoman", ui-serif, "New York", Georgia, Cambria, "Times New Roman", Times, serif;
+    --mono: "CommitMonoV143", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+    font-optical-sizing: auto;
+    font-variation-settings: 'wght' 375;
+
     --line-height: 1.4;
 
     --body-padding: 26px;
@@ -157,25 +161,32 @@ svg {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--serif);
-    font-weight: 400;
+    font-weight: 500;
+    font-variation-settings: 'wght' 550, 'opsz' 127;
 }
 
 h1 {
-    font-size: 1.5em;
+    margin-block-start: var(--font-size);
+    margin-block-end: 0;
+    font-size: 1.5rem;
+    font-weight: 550;
+    font-variation-settings: 'wght' 600, 'opsz' 127;
 }
 
 h2 {
     margin-block: .67em;
-    font-size: 1.5em;
+    font-size: 1.5rem;
 }
 
 h3 {
-    font-size: 16px;
-    margin-block-start: 1.67em;
+    font-size: 1.3rem;
+    margin-block-start: calc(var(--font-size) * 1.5);
+    margin-block-end: var(--font-size);
 }
 
 strong, b {
     font-weight: 500;
+    font-variation-settings: 'wght' 450;
 }
 
 
@@ -198,6 +209,10 @@ strong, b {
 }
 
 .backlink-button {
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+    
     text-decoration: none;
     padding-block: .25em;
     padding-inline: .5em;
@@ -222,7 +237,7 @@ strong, b {
     width: 14px;
     height: 14px;
     vertical-align: middle;
-    transform: translateY(-1px);
+    transform: translateY(0px);
 }
 
 .backlink-seperator {
@@ -230,7 +245,8 @@ strong, b {
     width: 12px;
     height: 12px;
     display: block;
-    transform: translateY(-1px);
+    transform: translateY(-0.25px);
+    transition-property: none;
 }
 
 .backlink-current {
@@ -312,6 +328,7 @@ header a, header a:visited,
 
 .timestamp {
     font-family: var(--mono);
+    font-feature-settings: "ss03" on, "ss04" on, "ss05" on, "cv10" on;
     font-size: 12px;
     color: var(--text-alt);
 
@@ -360,7 +377,8 @@ article header {
     margin-block-start: 1.75em;
     margin-block-end: 1em;
     font-size: 13px;
-    font-weight: normal;
+    font-weight: 400;
+    font-variation-settings: 'wght' 375;
 }
 
 #microblog > header > p {
@@ -382,8 +400,8 @@ article header {
 }
 
 .blog.title {
-    margin-block-start: 0.335em;
-    margin-block-end: 1.25em;
+    margin-block-start: 0.2233em;
+    margin-block-end: .67em;
 }
 
 .blog-item {
@@ -583,6 +601,7 @@ a[class="ibutton download-ibutton"] {
 
 .ibutton.download-ibutton > span > span {
     font-family: var(--mono);
+    font-feature-settings: "ss03" on, "ss04" on, "ss05" on, "cv10" on;
     font-size: 9px;
     color: var(--text-alt);
 }
@@ -613,6 +632,9 @@ a[class="ibutton download-ibutton"] {
 }
 
 code {
+    font-family: var(--mono);
+    font-feature-settings: "ss03" on, "ss04" on, "ss05" on, "cv10" on;
+
     text-wrap: nowrap;
     color: #6b7280;
     background-color: #f9fafb;
@@ -625,6 +647,7 @@ pre > code {
     display: block;
     overflow-x: scroll;
     font-family: var(--mono);
+    font-feature-settings: "ss03" on, "ss04" on, "ss05" on, "cv10" on;
 
     padding: 1rem;
     border: 1px solid #f3f4f6;
@@ -633,6 +656,24 @@ pre > code {
 
 .gist {
     margin-block: 1em;
+}
+
+.gist, .gist-meta, .gist .gist-meta {
+    font-size: 12px !important;
+    font-family: var(--sans-serif) !important;
+    font-optical-sizing: auto !important;
+    font-variation-settings: 'wght' 375 !important;
+}
+
+.gist .gist-meta a {
+    font-weight: 500;
+    font-variation-settings: 'wght' 475 !important;
+}
+
+.gist .blob-code-inner {
+    font-family: var(--mono) !important;
+    font-size: 11px !important;
+    font-feature-settings: "ss03" on, "ss04" on, "ss05" on, "cv10" on !important;
 }
 
 
@@ -695,6 +736,7 @@ pre > code {
 .og-title {
     text-wrap: wrap;
     font-weight: 500;
+    font-variation-settings: 'wght' 450;
     margin-block-end: 0.25rem;
 }
 
@@ -750,6 +792,7 @@ pre > code {
 .microblog-conversation {
     color: var(--fg-lighter);
     padding-block-end: 3em;
+    font-size: calc(var(--font-size) - 1px);
 }
 
 .microblog-conversation > hr {
@@ -778,7 +821,7 @@ pre > code {
 
 .reply-metadata .timestamp {
     gap: .16rem;
-    font-size: 11px;
+    font-size: 10px;
 }
 
 .reply-metadata .enter {
@@ -788,19 +831,20 @@ pre > code {
 .reply-metadata .enter svg {
     width: 12px;
     height: 12px;
-    transform: translateY(-1.25px);
+    transform: translateY(-0.5px);
 }
 
 .reply-author {
     font-weight: 425;
+    font-variation-settings: 'wght' 425;
     display: flex;
     align-items: center;
     gap: .25rem;
 }
 
 .reply-author svg {
-    width: 14px;
-    height: 14px;
+    width: 13px;
+    height: 13px;
     vertical-align: middle;
     transform: translateY(0.5px);
     color: var(--link-color);
