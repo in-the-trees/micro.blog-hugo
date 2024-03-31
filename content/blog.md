@@ -1,6 +1,6 @@
 ---
 title: "Blog"
-description: "My blog"
+description: "Where I post extended or more evergreen content compared to my microblog."
 type: blog
 layout: "list"
 menu:

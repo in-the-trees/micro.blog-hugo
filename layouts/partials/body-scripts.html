@@ -1,0 +1,58 @@
+<!-- relative-time.ts -->
+{{ if and (eq .Type "post") (not .Title) }}
+    {{ $opts := dict "targetPath" "ts/relative-time.js" }}
+    {{ $opts = merge $opts (dict "minify" "true") }}
+    {{ with resources.Get "ts/relative-time.ts" | js.Build $opts | fingerprint }}
+        <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>
+    {{ end }}
+{{ end }}
+
+{{ if or (eq .Title "Microblog") (eq .Title "Microblog archive") }}
+    {{ $opts := dict "targetPath" "ts/relative-time.js" }}
+    {{ $opts = merge $opts (dict "minify" "true") }}
+    {{ with resources.Get "ts/relative-time.ts" | js.Build $opts | fingerprint }}
+        <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>
+    {{ end }}
+{{ end }}
+
+<!-- og.ts -->
+{{ if eq .Type "post" }}
+    {{ $opts := dict "targetPath" "js/og.js" }}
+    {{ $opts = merge $opts (dict "minify" "true") }}
+    {{ with resources.Get "ts/og.ts" | js.Build $opts | fingerprint }}
+        <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>
+    {{ end }}
+{{ else if or (eq .Title "Microblog") (eq .Title "Microblog archive") }}
+    {{ $opts := dict "targetPath" "ts/og.js" }}
+    {{ $opts = merge $opts (dict "minify" "true") }}
+    {{ with resources.Get "ts/og.ts" | js.Build $opts | fingerprint }}
+        <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>
+    {{ end }}
+{{ end }}
+
+<!-- microblog-post-list.ts -->
+{{ if or (eq .Title "Microblog") (eq .Title "Microblog archive") }}
+    {{ $opts := dict "targetPath" "ts/page/microblog.js" }}
+    {{ $opts = merge $opts (dict "minify" "true") }}
+    {{ with resources.Get "ts/page/microblog-post-list.ts" | js.Build $opts | fingerprint }}
+        <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>
+    {{ end }}
+{{ end }}
+
+<!-- microblog-post.ts -->
+{{ if and (eq .Type "post") (not .Title) }}
+    {{ $opts := dict "targetPath" "ts/page/microblog-post.js" }}
+    {{ $opts = merge $opts (dict "minify" "true") }}
+    {{ with resources.Get "ts/page/microblog-post.ts" | js.Build $opts | fingerprint }}
+        <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>
+    {{ end }}
+{{ end }}
+
+<!-- blog-post.ts -->
+{{ if and (eq .Type "post") (.Title) }}
+    {{ $opts := dict "targetPath" "ts/page/blog-post.js" }}
+    {{ $opts = merge $opts (dict "minify" "true") }}
+    {{ with resources.Get "ts/page/blog-post.ts" | js.Build $opts | fingerprint }}
+        <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>
+    {{ end }}
+{{ end }}

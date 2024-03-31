@@ -256,6 +256,14 @@ strong, b {
     border-radius: .75em;
 }
 
+.mbpl-h {
+    display: none;
+}
+
+.microblog-post-list > .microblog-item:last-of-type > hr {
+    display: none;
+}
+
 #to-microblog {
     margin-inline-start: auto;
 
@@ -346,7 +354,7 @@ header a, header a:visited,
     color: var(--text-alt);
 }
 
-.timestamp.microblog-item-timestamp {
+.timestamp.microblog-item-timestamp, .title.timestamp, .blog.timestamp {
     margin-inline-start: -2px;
 }
 
@@ -354,9 +362,12 @@ h2.title {
     margin-block-start: .67em;
     margin-block-end: 0.335em;
 }
-p.subtitle {
+.subtitle {
     margin-block-start: 0.5em;
-    margin-block-end: 2.25em;
+    padding-block-end: 1.25em;
+}
+.subtitle > p:first-of-type {
+    margin-block-start: 0;
 }
 
 hr {
@@ -502,7 +513,6 @@ img:active, img:focus {
 }
 
 img:active, img:hover {
-    opacity: .9;
     transform: scale(103%);
 }
 
@@ -585,10 +595,6 @@ a, a:visited {
     width: 1rem;
     height: 1rem;
     vertical-align: middle;
-}
-
-.ibutton:active, .ibutton:hover svg {
-    transform: translateY(0.0rem);
 }
 
 a[class="ibutton download-ibutton"] {

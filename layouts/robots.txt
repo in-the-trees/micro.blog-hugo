@@ -2,6 +2,7 @@ User-agent: *
 Sitemap: https://jade.van-dorsten.net/sitemap.xml
 Disallow: /categories
 Disallow: /metadata
+Disallow: /microblog/archive
 
 User-agent: *
 Disallow: /2024/

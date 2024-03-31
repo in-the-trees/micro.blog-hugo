@@ -1,0 +1,63 @@
+{{ if eq .Title "Microblog" }}
+
+    {{ $allPosts := where .Site.Pages "Type" "post" }}
+
+    {{ $threeDaysAgo := now.AddDate 0 0 -3 }}
+    {{ $filteredPosts := where $allPosts ".Date" "gt" $threeDaysAgo }}
+
+    {{ $sortedPosts := sort $filteredPosts ".Params.date" "desc" }}
+
+    <!-- if no posts due to filtering etc -->
+    {{ if not $sortedPosts }}
+        <p>No recent posts; check back later :^)</p>
+    {{ end }}
+
+    {{ $list := slice }}
+
+    {{ range $sortedPosts }}
+    {{ if not .Title }}
+        {{ $lastMod := .Lastmod.Unix }}
+        {{ $date := .Date.Unix }}
+        {{ $showUpdate := in .Params.categories "show_updated" }}
+
+        {{ if and $showUpdate (gt $lastMod $date) }}
+            {{ $list = $list | append (dict "post" . "date" $lastMod) }}
+        {{ else }}
+            {{ $list = $list | append (dict "post" . "date" $date) }}
+        {{ end }}
+    {{ end }}
+    {{ end }}
+
+    {{ $list = sort $list "date" "desc" }}
+    {{ range $list }}
+        {{ partial "microblog-item.html" . }}
+    {{ end }}
+
+{{ else if eq .Title "Microblog archive" }}
+
+    {{ $allPosts := where .Site.Pages "Type" "post" }}
+
+    {{ $sortedPosts := sort $allPosts ".Params.date" "desc" }}
+
+    {{ $list := slice }}
+
+    {{ range $sortedPosts }}
+    {{ if not .Title }}
+        {{ $lastMod := .Lastmod.Unix }}
+        {{ $date := .Date.Unix }}
+        {{ $showUpdate := in .Params.categories "show_updated" }}
+
+        {{ if and $showUpdate (gt $lastMod $date) }}
+            {{ $list = $list | append (dict "post" . "date" $lastMod) }}
+        {{ else }}
+            {{ $list = $list | append (dict "post" . "date" $date) }}
+        {{ end }}
+    {{ end }}
+    {{ end }}
+
+    {{ $list = sort $list "date" "desc" }}
+    {{ range $list }}
+        {{ partial "microblog-item.html" . }}
+    {{ end }}
+
+{{ end}}
