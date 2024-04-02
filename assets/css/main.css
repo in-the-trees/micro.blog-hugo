@@ -6,7 +6,7 @@
 :root {
     --font-size: 14px;
     --sans-serif: "InterVariable", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "San Francisco", "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --serif: "PlayfairRoman", ui-serif, "New York", Georgia, Cambria, "Times New Roman", Times, serif;
+    --serif: "Lora", ui-serif, "New York", Georgia, Cambria, "Times New Roman", Times, serif;
     --mono: "CommitMonoV143", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
     font-optical-sizing: auto;
@@ -162,24 +162,25 @@ svg {
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--serif);
     font-weight: 500;
-    font-variation-settings: 'wght' 550, 'opsz' 127;
+    font-variation-settings: 'wght' 450;
 }
 
 h1 {
     margin-block-start: var(--font-size);
     margin-block-end: 0;
-    font-size: 1.5rem;
+    font-size: 1.5em;
     font-weight: 550;
-    font-variation-settings: 'wght' 600, 'opsz' 127;
+    font-variation-settings: 'wght' 450;
+    font-style: italic;
 }
 
 h2 {
     margin-block: .67em;
-    font-size: 1.5rem;
+    font-size: 1.5em;
 }
 
 h3 {
-    font-size: 1.3rem;
+    font-size: 1.25em;
     margin-block-start: calc(var(--font-size) * 1.5);
     margin-block-end: var(--font-size);
 }
