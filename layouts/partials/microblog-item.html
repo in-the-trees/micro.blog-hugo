@@ -1,17 +1,23 @@
-<li class="microblog-item" data-date="{{- .post.Date.Format "2006-01-02T15:04:05Z0700" -}}">
+<li class="microblog-item" 
+{{- if .post.Lastmod -}}
+data-date="{{- .post.Lastmod.Format "2006-01-02T15:04:05Z0700" -}}"
+{{- else -}}
+data-date="{{- .post.Date.Format "2006-01-02T15:04:05Z0700" -}}"
+{{- end -}}
+>
     <article tabindex="0" class="h-entry">
         <header>
             {{ $date := .post.Date.Format "Jan 2, 15:04" }}
             {{ $lastmod := .post.Lastmod.Format "Jan 2, 15:04" }}
             <div class="timestamp microblog-item-timestamp">
                 <a href="{{ .post.Permalink }}" class="u-url enter" aria-label="Open post">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" /></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.25 8 21 11.75m0 0-3.75 3.75M21 11.75H3"/></svg>
                 </a><time pubdate itemprop="datePublished" datetime="{{- .post.Date.Format "2006-01-02T15:04:05Z0700" -}}">{{- $date -}}</time>
                 {{- if in .post.Params.categories "show_updated" -}}
                 <svg xmlns="http://www.w3.org/2000/svg" class="updated-icon" title="Updated" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                     <title>Updated</title><path stroke-linecap="round" stroke-linejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
                 </svg>    
-                <time pubdate datetime="{{- .post.Date.Format "2006-01-02T15:04:05Z0700" -}}">{{ $lastmod -}}</time>
+                <time pubdate datetime="{{- .post.Lastmod.Format "2006-01-02T15:04:05Z0700" -}}">{{ $lastmod -}}</time>
                 {{- end -}}
             </div>
         </header>
