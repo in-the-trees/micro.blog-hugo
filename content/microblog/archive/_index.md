@@ -1,6 +1,6 @@
 ---
 title: "Microblog archive"
-description: "Archive of my microblog, where I post short, tweet-like content that I feel comfortable sharing publicly."
+description: "Archive of my microblog, where I publish short, tweet-like posts."
 type: microblog
 layout: "archive/list"
 menu:

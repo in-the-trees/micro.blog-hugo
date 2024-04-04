@@ -1,6 +1,6 @@
 ---
 title: "Microblog"
-description: "Where I post short, tweet-like content that I feel comfortable sharing publicly."
+description: "Where I publish short, tweet-like posts."
 type: microblog
 layout: "list"
 menu:
