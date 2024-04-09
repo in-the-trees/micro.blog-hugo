@@ -1,5 +1,6 @@
 User-agent: *
 Sitemap: https://jade.van-dorsten.net/sitemap.xml
+Disallow: /about
 Disallow: /categories
 Disallow: /metadata
 Disallow: /microblog/archive
