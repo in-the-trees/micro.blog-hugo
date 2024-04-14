@@ -1,9 +1,9 @@
 {
   "version": "https://jsonfeed.org/version/1.1",
-  "title": "Jade's microblog (all posts)",
+  "title": "Jade's microblog (recent posts)",
   "icon": "{{ .Site.BaseURL }}avatar.png",
   "home_page_url": "{{ .Site.BaseURL }}microblog/",
-  "feed_url": "{{ .Site.BaseURL }}/api/all.json",
+  "feed_url": "{{ .Site.BaseURL }}/api/recent.json",
   "authors" : [
     {
       "url" : "{{ .Site.BaseURL }}",
@@ -12,21 +12,25 @@
   ],
   "language": "en",
   "items": [
-    {{- $allPosts := where .Site.Pages "Type" "post" -}}
-    {{- $sortedPosts := sort $allPosts ".Params.date" "desc" -}}
-    {{- $list := slice -}}
+    {{ $allPosts := where .Site.Pages "Type" "post" }}
+    {{ $threeDaysAgo := now.AddDate 0 0 -3 }}
+    {{ $filteredPosts := where $allPosts ".Date" "gt" $threeDaysAgo }}
+    {{ $sortedPosts := sort $filteredPosts ".Params.date" "desc" }}
+    {{ $list := slice }}
 
-    {{- range $sortedPosts -}}
-        {{- $lastMod := .Lastmod.Unix -}}
-        {{- $date := .Date.Unix -}}
-        {{- $showUpdate := in .Params.categories "show_updated" -}}
+    {{ range $sortedPosts }}
+    {{ if not .Title }}
+        {{ $lastMod := .Lastmod.Unix }}
+        {{ $date := .Date.Unix }}
+        {{ $showUpdate := in .Params.categories "show_updated" }}
 
-        {{- if and $showUpdate (gt $lastMod $date) -}}
-            {{- $list = $list | append (dict "post" . "date" $lastMod) -}}
-        {{- else -}}
-            {{- $list = $list | append (dict "post" . "date" $date) -}}
-        {{- end -}}
-    {{- end -}}
+        {{ if and $showUpdate (gt $lastMod $date) }}
+            {{ $list = $list | append (dict "post" . "date" $lastMod) }}
+        {{ else }}
+            {{ $list = $list | append (dict "post" . "date" $date) }}
+        {{ end }}
+    {{ end }}
+    {{ end }}
 
     {{- $list = sort $list "date" "desc" -}}
     {{- $len := len $list -}}

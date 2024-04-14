@@ -37,6 +37,13 @@
             "baseName":"all",
             "isPlainText":true,
             "notAlternative":true
+        },
+        "apiRecentJSON":{
+            "mediaType":"application/json",
+            "path":"api",
+            "baseName":"recent",
+            "isPlainText":true,
+            "notAlternative":true
         }
     },
     "outputs":{
@@ -44,7 +51,8 @@
             "HTML",
             "MicroblogJSON",
             "BlogJSON",
-            "apiAllJSON"
+            "apiAllJSON",
+            "apiRecentJSON"
         ],
         "page":[
             "HTML"
