@@ -3,7 +3,7 @@
   "title": "Jade's microblog (all posts)",
   "icon": "{{ .Site.BaseURL }}avatar.png",
   "home_page_url": "{{ .Site.BaseURL }}microblog/",
-  "feed_url": "{{ .Site.BaseURL }}/api/all.json",
+  "feed_url": "{{ .Site.BaseURL }}api/all.json",
   "authors" : [
     {
       "url" : "{{ .Site.BaseURL }}",
