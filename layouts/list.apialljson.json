@@ -61,6 +61,7 @@
                     {{- end -}}
                 ],
                 {{- end -}}
+                "url": {{- $post.Permalink | jsonify -}},
                 "content_html": {{ $s }}
             }{{- if ne (add $index 1) $len -}},{{- end -}}
         {{- end -}}
