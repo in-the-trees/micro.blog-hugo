@@ -52,7 +52,9 @@
                     {{- if in $post.Params.categories "show_updated" -}}
                     "date_modified": "{{ $lastmod }}",
                     {{- end -}}
+                    {{- if $post.Params.categories -}}
                     "categories": {{ $post.Params.categories | jsonify }},
+                    {{- end -}}
                     {{- if and (isset $post.Params "photos_with_metadata") (ne $post.Params.photos_with_metadata nil) -}}
                     "photos": [
                         {{- $photoLen := len $post.Params.photos_with_metadata -}}
