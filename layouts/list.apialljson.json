@@ -34,27 +34,33 @@
         {{- $post := .post -}}
         {{- if not $post.Title -}}
             {
-                {{- if $post.Params.guid -}}
-                "id": "{{ $post.Params.guid }}",
-                {{- else -}}
-                "id": "{{ $post.Permalink }}",
-                {{- end -}}
+                {{- $date := $post.Date.Format "2006-01-02T15:04:05Z0700" -}}
+                {{- $lastmod := $post.Lastmod.Format "2006-01-02T15:04:05Z0700" -}}
                 {{- $s := $post.Content | jsonify -}}
                 {{- $s := replace $s "\\u003c" "<" -}}
                 {{- $s := replace $s "\\u003e" ">" -}}
                 {{- $s := replace $s "\\u0026" "&" -}}
                 {{- $s := replaceRE "<svg.*?</svg>" "" $s -}}
-                "content_html": {{ $s }},
-                {{- $date := $post.Date.Format "2006-01-02T15:04:05Z0700" -}}
-                {{- $lastmod := $post.Lastmod.Format "2006-01-02T15:04:05Z0700" -}}
+                "id": "{{ $post.Params.post_id }}",
                 "date_published": "{{ $date }}",
                 {{- if in $post.Params.categories "show_updated" -}}
                 "date_modified": "{{ $lastmod }}",
                 {{- end -}}
                 "categories": {{ $post.Params.categories | jsonify }},
-                "url": "{{ $post.Permalink }}"
-            }
-            {{- if ne (add $index 1) $len -}},{{- end -}}
+                {{- if and (isset $post.Params "photos_with_metadata") (ne $post.Params.photos_with_metadata nil) -}}
+                "photos": [
+                    {{- $photoLen := len $post.Params.photos_with_metadata -}}
+                    {{- range $photoIndex, $photo := $post.Params.photos_with_metadata -}}
+                    {
+                    "url": "{{ $photo.url }}",
+                    "width": {{ $photo.width }},
+                    "height": {{ $photo.height }}
+                    }{{- if ne (add $photoIndex 1) $photoLen -}},{{- end -}}
+                    {{- end -}}
+                ],
+                {{- end -}}
+                "content_html": {{ $s }}
+            }{{- if ne (add $index 1) $len -}},{{- end -}}
         {{- end -}}
     {{- end -}}
 ]
