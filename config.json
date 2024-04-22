@@ -30,29 +30,13 @@
             "baseName":"feed",
             "isPlainText":true,
             "notAlternative":true
-        },
-        "apiALlJSON":{
-            "mediaType":"application/json",
-            "path":"api",
-            "baseName":"all",
-            "isPlainText":true,
-            "notAlternative":true
-        },
-        "apiRecentJSON":{
-            "mediaType":"application/json",
-            "path":"api",
-            "baseName":"recent",
-            "isPlainText":true,
-            "notAlternative":true
         }
     },
     "outputs":{
         "home":[
             "HTML",
             "MicroblogJSON",
-            "BlogJSON",
-            "apiAllJSON",
-            "apiRecentJSON"
+            "BlogJSON"
         ],
         "page":[
             "HTML"
